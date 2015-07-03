@@ -7,7 +7,7 @@ if ! $(hash subl);then
   exit
 fi
 
-ST_VERSION_NUMBER="$(subl -v | grep -o "[[:digit:]]*")"
+ST_VERSION_NUMBER="$(subl -v | grep -o "[[:digit:]].*")"
 ST_MAIN_VERSION="${ST_VERSION_NUMBER:0:1}"
 
 ST_USER_PATH="$HOME/.config/sublime-text-${ST_MAIN_VERSION}/Packages/User"

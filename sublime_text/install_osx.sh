@@ -1,13 +1,13 @@
 #!/bin/bash
 
 PWD="$( cd "$(dirname $0)" && pwd )"
-
-if ! [[ -e "/Applications/Sublime Text.app" ]];then
+ST_PATH="/Applications/Sublime Text.app"
+if ! [[ -e "$ST_PATH" ]];then
   echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"
   exit
 fi
 
-ST_VERSION_NUMBER="$(subl -v | grep -o "[[:digit:]]*")"
+ST_VERSION_NUMBER="$(subl -v | grep -o "[[:digit:]].*")"
 ST_MAIN_VERSION="${ST_VERSION_NUMBER:0:1}"
 
 ST_USER_PATH="$HOME/Library/Application Support/Sublime Text ${ST_MAIN_VERSION}/Packages/User"

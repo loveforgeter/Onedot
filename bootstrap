@@ -5,7 +5,7 @@ SH=/bin/bash
 
 # check operation system
 OS="linux"
-if [[ "(uname -s)" == "Darwin" ]];then
+if [[ "$(uname -s)" == "Darwin" ]];then
   OS="osx"
 fi
 
