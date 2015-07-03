@@ -1,0 +1,54 @@
+#!/bin/bash
+
+ONE_DOT=$(dirname $0)
+SH=/bin/bash
+
+# check operation system
+OS="linux"
+if [[ "(uname -s)" == "Darwin" ]];then
+  OS="osx"
+fi
+
+# filter avalible modules
+avaliable_mods() {
+  sed "/^#/d;s/module\s*//" $ONE_DOT/modules
+}
+
+# install one module
+install_module() {
+  echo "Install module $1"
+  module=$1
+  # common install
+  if [[ -e $ONE_DOT/$module/install.sh ]];then
+    if ! $SH $ONE_DOT/$module/install.sh;then
+      echo "Failed to install module $1"
+      exit 1
+    fi
+  fi
+
+  # platform dependent install
+  if [[ -e $ONE_DOT/$module/install.sh ]];then
+    if ! $SH $ONE_DOT/$module/install.sh;then
+      echo "Failed to install module $1"
+      exit 1
+    fi
+  fi
+}
+
+# install dotfiles
+install_onedot() {
+  echo "Install One."
+  for path in $(avaliable_mods);do
+    install_module $path
+  done
+  echo "********************************"
+  echo "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
+  echo "*  ║     ║ ║     ║ ║     ║     *"
+  echo "*  ║     ║ ║     ║ ╠═════╝     *"
+  echo "*  ║     ║ ║     ║ ║           *"
+  echo "*  ╚═════╝ ╩     ╩ ╚═════╝  ♥  *"
+  echo "********************************"
+  echo "Success!Enjoy One."
+}
+
+install_onedot
