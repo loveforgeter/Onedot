@@ -27,8 +27,8 @@ install_module() {
   fi
 
   # platform dependent install
-  if [[ -e $ONE_DOT/$module/install.sh ]];then
-    if ! $SH $ONE_DOT/$module/install.sh;then
+  if [[ -e $ONE_DOT/$module/install_$OS.sh ]];then
+    if ! $SH $ONE_DOT/$module/install_$OS.sh;then
       echo "Failed to install module $1"
       exit 1
     fi

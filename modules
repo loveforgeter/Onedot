@@ -5,13 +5,13 @@
 #module bash
 #module bin
 #module brew
-#module fonts
+module fonts
 #module git
 #module gnome_shell
 #module go
 #module gtk_theme
 #module modules
 #module packages
-#module sublime_text
+module sublime_text
 #module vim
 module zsh

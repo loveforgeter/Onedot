@@ -1,4 +1,4 @@
-PWD=$(dirname $0)
+PWD="$( cd "$(dirname $0)" && pwd )"
 
 source $PWD/antigen/antigen.zsh
 
