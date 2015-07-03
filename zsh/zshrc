@@ -1,5 +1,6 @@
 # ZSH Configuration
-PWD=$(dirname $0)
+
+PWD=$(readlink -f $0)
 
 # use antigen to manage zsh plugins
 source $PWD/antigen.zsh
