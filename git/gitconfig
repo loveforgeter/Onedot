@@ -1,0 +1,22 @@
+[alias]
+  br = branch
+  clear = clean -df
+  cm = commit -m
+  co = checkout
+  last = log -1
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  st = status
+  unstage = reset HEAD
+  recover = reset --hard HEAD
+  track = checkout --track
+[push]
+  default = simple
+[color "status"]
+  header = blue normal
+  branch = white blue ul
+  nobranch = yellow normal
+  added = green normal
+  changed = red normal
+  untracked = magenta normal
+[color]
+  ui = true

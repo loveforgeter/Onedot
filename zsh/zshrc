@@ -4,4 +4,6 @@ PWD=$(dirname ${${(%):-%x}:A})
 
 # use antigen to manage zsh plugins
 source $PWD/antigen.zsh
+
+# beautiful ls colors
 source $PWD/dircolors.zsh

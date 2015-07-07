@@ -21,4 +21,4 @@ fi
 
 # linking settings directory
 rm -rfv "$ST_USER_PATH"
-ln -dsv "${PWD}/settings" "$ST_USER_PATH"
+ln -Ffsv "${PWD}/settings" "$ST_USER_PATH"

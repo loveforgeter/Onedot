@@ -2,16 +2,12 @@
 # Module name is the directory name which including install.sh or install_os.sh file.
 # To disable one module,just comment the line useing '#' charactor
 
-#module bash
 #module bin
 #module brew
 module fonts
-#module git
-#module gnome_shell
+module git
 #module go
-#module gtk_theme
-#module modules
 #module packages
 module sublime_text
-#module vim
+module vim
 module zsh

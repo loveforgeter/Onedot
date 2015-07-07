@@ -9,6 +9,11 @@ if [[ "$(uname -s)" == "Darwin" ]];then
   OS="osx"
 fi
 
+# update sub modules
+update_submodules() {
+  git submodule update --init --recursive
+}
+
 # filter avalible modules
 avaliable_mods() {
   sed "/^#/d;s/module\s*//" $ONE_DOT/modules

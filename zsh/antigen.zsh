@@ -16,6 +16,6 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme agnoster
+antigen theme https://gist.github.com/ec8dfabce7f1fc5ef77e.git agnoster
 
 antigen apply
