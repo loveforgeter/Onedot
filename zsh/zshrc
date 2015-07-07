@@ -1,5 +1,7 @@
 # ZSH Configuration
 
 PWD=$(dirname ${${(%):-%x}:A})
+
 # use antigen to manage zsh plugins
 source $PWD/antigen.zsh
+source $PWD/dircolors.zsh
