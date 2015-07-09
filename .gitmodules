@@ -10,3 +10,7 @@
 	path = vim/vim/plugins/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
 	branch = master
+[submodule "zsh/dircolors"]
+	path = zsh/dircolors
+	url = https://github.com/seebi/dircolors-solarized.git
+	branch = master
