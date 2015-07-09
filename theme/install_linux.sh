@@ -1,18 +1,4 @@
 #!bin/bash
-set -e
-# Install nice gtk theme(Moka and Numix)
-if ! [[ -d $SCRIPT_PATH ]];then
-	echo "SCRIPT_PATH not exist!"
-	exit
-fi
-
-source $SCRIPT_PATH/utils.sh
-
-if !$(IsUbuntu);then
-	echo "Only works on ubuntu"
-	exit
-fi
-
 # Ask for su permission
 sudo -v
 
@@ -25,19 +11,23 @@ sudo add-apt-repository -y ppa:numix/ppa
 sudo add-apt-repository -y ppa:moka/stable
 sudo apt-get update
 
-THEMES="
- moka-gtk-theme
- moka-icon-theme
- numix-gtk-theme
- numix-icon-theme
- numix-icon-theme-circle
-"
+THEMES=(
+moka-gtk-theme
+moka-icon-theme
+numix-gtk-theme
+numix-icon-theme
+numix-icon-theme-circle
+)
+
 echo "Installing Moka and Numix Theme"
-sudo apt-get install -y $THEMES
+
+for THEME in ${THEMES[*]};do
+  sudo apt-get install -y $THEME
+done
 
 echo "All themes installed!"
-echo "Here is a very nice icon theme,numix-icon-theme-square"
-echo "Get it here http://mirror.umd.edu/antergos/antergos/i686/"
+echo "A very nice icon theme , numix-icon-theme-square"
+echo "At here http://mirror.umd.edu/antergos/antergos/i686/"
 
 # numix-icon-theme-square -- a very nice icon theme
 # http://mirror.umd.edu/antergos/antergos/i686/
