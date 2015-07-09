@@ -6,10 +6,6 @@
 	path = fonts
 	url = https://github.com/powerline/fonts.git
 	branch = master
-[submodule "zsh/dircolors/dircolors-solarized"]
-	path = zsh/dircolors/dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
-	branch = master
 [submodule "vim/vim/plugins/Vundle.vim"]
 	path = vim/vim/plugins/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
