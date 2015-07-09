@@ -1,0 +1,8 @@
+*
+GoSubmlime-aux.submlie-settings
+!.gitignore
+!*.sublime-build
+!*.sublime-commands
+!*.sublime-completions
+!*.sublime-keymap
+!*.sublime-settings
