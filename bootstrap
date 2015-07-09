@@ -56,4 +56,5 @@ install_onedot() {
   echo "Success!Enjoy One."
 }
 
+update_submodules
 install_onedot
