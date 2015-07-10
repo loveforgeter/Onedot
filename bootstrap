@@ -85,7 +85,7 @@ function main() {
   # run all scripts
   for INSTALLER in $ALL_INSTALLERS;do
     echo -n "Running $INSTALLER ... "
-    if eval source $INSTALLER $OUT_REDIRECT;then
+    if source $INSTALLER $OUT_REDIRECT;then
       echo_ok
     else
       echo_error
