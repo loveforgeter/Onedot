@@ -1,7 +1,4 @@
-#!/bin/bash
-
-# ask for su permission
-sudo -v
+#!/usr/bin/env bash
 
 PACKAGES=(
 build-essential

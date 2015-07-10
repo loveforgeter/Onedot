@@ -1,6 +1,5 @@
-#!/bin/bash
-
-PWD=$( cd "$(dirname $0)" && pwd )
+#!/usr/bin/env bash
+PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
 
 if ! $(hash subl);then
   echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"

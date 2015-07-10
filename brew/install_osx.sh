@@ -1,4 +1,3 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 hash brew && exit
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

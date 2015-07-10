@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-PWD="$( cd "$(dirname $0)" && pwd )"
+PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
 ST_PATH="/Applications/Sublime Text.app"
 if ! [[ -e "$ST_PATH" ]];then
   echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"

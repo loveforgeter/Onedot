@@ -1,60 +1,99 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-ONE_DOT=$(dirname $0)
-SH=/bin/bash
+PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
 
-# check operation system
-OS="linux"
-if [[ "$(uname -s)" == "Darwin" ]];then
-  OS="osx"
-fi
+function show_help() {
+cat <<- EOF
+bootstrap [options]
+OPTIONS:
+  -v verbose mode
+  -h help message
+EOF
+}
 
-# update sub modules
-update_submodules() {
+function echo_info() {
+  echo -ne "\e[0;34m"
+  echo "$1"
+  echo -ne "\e[0m"
+}
+
+function echo_success() {
+  echo -ne "\e[0;32m"
+  echo "$1"
+  echo -ne "\e[0m"
+}
+
+function echo_error() {
+  echo -ne "\e[0;31m"
+  echo "$1"
+  echo -ne "\e[0m"
+}
+
+function echo_warning() {
+  echo -ne "\e[0;33m"
+  echo "$1"
+  echo -ne "\e[0m"
+}
+
+function echo_ok() {
+  echo_success "[OK]"
+}
+
+function echo_failed() {
+  echo_error "[FAILED]"
+}
+
+function echo_logo() {
+  echo_info "********************************"
+  echo_info "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
+  echo_info "*  ║     ║ ║     ║ ║     ║     *"
+  echo_info "*  ║     ║ ║     ║ ╠═════╝     *"
+  echo_info "*  ║     ║ ║     ║ ║           *"
+  echo_info "*  ╚═════╝ ╩     ╩ ╚═════╝  ♥  *"
+  echo_info "********************************"
+}
+
+function main() {
+  # make sure all submodules are initialized
   git submodule update --init --recursive
-}
 
-# filter avalible modules
-avaliable_mods() {
-  sed "/^#/d;s/module\s*//" $ONE_DOT/modules
-}
+  OUT_REDIRECT="> /dev/null"
+  case $1 in
+    -v)
+      OUT_REDIRECT="";;
+    -h)
+      show_help
+      ;;
+    *)
+      shift
+      ;;
+  esac
 
-# install one module
-install_module() {
-  echo "Install module $1"
-  module=$1
-  # common install
-  if [[ -e $ONE_DOT/$module/install.sh ]];then
-    if ! $SH $ONE_DOT/$module/install.sh;then
-      echo "Failed to install module $1"
-      exit 1
-    fi
+  echo "Welcome to One."
+
+  # OS detection
+  OS_SUFFIX="linux"
+  if [[ "$(uname -s)" == "Darwin" ]];then
+    OS_SUFFIX="osx"
   fi
 
-  # platform dependent install
-  if [[ -e $ONE_DOT/$module/install_$OS.sh ]];then
-    if ! $SH $ONE_DOT/$module/install_$OS.sh;then
-      echo "Failed to install module $1"
-      exit 1
-    fi
-  fi
-}
+  # find script named install.sh and or install_os.sh
+  INSTALLERS=$(find "$PWD" -maxdepth 2 -name install.sh)
+  INSTALLERS_SPEC=$(find "$PWD" -maxdepth 2 -name install_$OS_SUFFIX.sh)
+  ALL_INSTALLERS="$INSTALLERS $INSTALLERS_SPEC"
 
-# install dotfiles
-install_onedot() {
-  echo "Install One."
-  for path in $(avaliable_mods);do
-    install_module $path
+  # run all scripts
+  for INSTALLER in $ALL_INSTALLERS;do
+    echo -n "Running $INSTALLER ... "
+    if eval source $INSTALLER $OUT_REDIRECT;then
+      echo_ok
+    else
+      echo_error
+    fi
   done
-  echo "********************************"
-  echo "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
-  echo "*  ║     ║ ║     ║ ║     ║     *"
-  echo "*  ║     ║ ║     ║ ╠═════╝     *"
-  echo "*  ║     ║ ║     ║ ║           *"
-  echo "*  ╚═════╝ ╩     ╩ ╚═════╝  ♥  *"
-  echo "********************************"
-  echo "Success!Enjoy One."
+
+  echo_logo
+  echo_success "Success!Enjoy One."
 }
 
-update_submodules
-install_onedot
+main $@

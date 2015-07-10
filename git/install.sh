@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-PWD="$( cd "$(dirname $0)" && pwd )"
+PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
 
-ln -fsv $PWD/gitconfig $HOME/.gitconfig
+ln -fsv "$PWD/gitconfig" "$HOME/.gitconfig"

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 hash brew || (echo "brew not installed" && exit)
 
 # common used packages
