@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
-hash brew && return
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+function od_main() {
+  hash brew && return
+
+  bot "installing homebrew ... "
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+od_main $@
+
+unset od_main

@@ -1,0 +1,160 @@
+#!/usr/bin/env bash
+
+##################################################
+## os detection
+
+function od_is_osx() {
+  [[ "$(uname -s)" == "Darwin" ]] || return 1
+}
+
+function od_is_ubuntu() {
+  [[ "$(cat /etc/issue)" =~ "Ubuntu" ]] || return 1
+}
+
+function od_unknown_os() {
+  (! od_is_ubuntu) || (! od_is_ubuntu) || return 1
+}
+
+##################################################
+## colors
+
+OD_ESC_SEQ="\e["
+if od_is_osx;then
+  OD_ESC_SEQ="\x1b["
+fi
+
+OD_COLOR_RESET=$OD_ESC_SEQ"0m"
+OD_FG_RED=$OD_ESC_SEQ"0;31m"
+OD_FG_GREEN=$OD_ESC_SEQ"0;32m"
+OD_FG_YELLOW=$OD_ESC_SEQ"0;33m"
+OD_FG_BLUE=$OD_ESC_SEQ"0;34m"
+OD_FG_MAGENTA=$OD_ESC_SEQ"0;35m"
+OD_FG_CYAN=$OD_ESC_SEQ"0;36m"
+
+##################################################
+## print functions
+function od_echo_info() {
+  echo -e "${OD_FG_BLUE}$1${OD_COLOR_RESET}"
+}
+
+function od_echo_success() {
+  echo -e "${OD_FG_GREEN}$1${OD_COLOR_RESET}"
+}
+
+function od_echo_warn() {
+  echo -e "${OD_FG_YELLOW}$1${OD_COLOR_RESET}"
+}
+
+function od_echo_error() {
+  echo -e "${OD_FG_RED}$1${OD_COLOR_RESET}"
+}
+
+function od_echo_return() {
+  echo ""
+}
+
+function od_info_ok() {
+  od_echo_success "[OK]"
+}
+
+function od_info_failed() {
+  od_echo_error "[FAILED]"
+}
+
+function od_bot() {
+  echo -e "${OD_FG_CYAN}=。=${OD_COLOR_RESET} - "$1
+}
+
+function od_logo() {
+  od_echo_info "********************************"
+  od_echo_info "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
+  od_echo_info "*  ║     ║ ║     ║ ║     ║     *"
+  od_echo_info "*  ║     ║ ║     ║ ╠═════╝     *"
+  od_echo_info "*  ║     ║ ║     ║ ║           *"
+  od_echo_info "*  ╚═════╝ ╩     ╩ ╚═════╝  ♥  *"
+  od_echo_info "********************************"
+}
+
+##################################################
+## action functions
+
+function od_link() {
+  echo "linking $1 -> $2"
+  ln -fs "$1" "$2"
+}
+
+function od_linkdir() {
+  local options="-dfs"
+  if od_is_osx;then
+    options="-Ffs"
+  fi
+
+  echo "linking $1 -> $2 ..."
+  if ln $options "$1" "$2";then
+    od_info_ok
+  else
+    od_info_failed
+  fi
+}
+
+function od_copy() {
+  echo "copying $1 -> $2 ..."
+  if cp -r "$1" "$2";then
+    od_info_ok
+  else
+    od_info_failed
+  fi
+}
+
+function od_mv() {
+  echo "copying $1 -> $2 ..."
+  if mv -r "$1" "$2";then
+    od_info_ok
+  else
+    od_info_failed
+  fi
+}
+
+function od_rm() {
+  echo "removing $1 ... "
+  if rm -rf "$1";then
+    od_info_ok
+  else
+    od_info_failed
+  fi
+}
+
+##################################################
+## packge managers
+
+function od_brew_install() {
+  if ! brew list $1 &> /dev/null;then
+    echo "brew installing $1 ..."
+    if brew install $1 &> /dev/null ;then
+      od_info_ok
+    else
+      od_info_failed
+    fi
+  fi
+}
+
+function od_apt_get_install() {
+  echo ""
+}
+
+##################################################
+## others
+
+# script path
+function od_pwd() {
+  echo "$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
+}
+
+# ask for sudo permissions
+function od_sudo() {
+  od_echo_warn "To install powerful packages,need sudo permission:)"
+  sudo -v
+
+  # Keep-alive: update existing sudo time stamp until the script has finished
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}

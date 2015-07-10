@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-hash zsh || (echo "zsh not installed" && exit)
 
-PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
+function od_main() {
+  hash zsh || (echo "zsh not installed" && return)
 
-ln -fsv $PWD/zshrc $HOME/.zshrc
+  od_bot "configuring zsh ..."
+  od_link "$(od_pwd)/zshrc" "$HOME/.zshrc"
+}
+
+od_main $@
+
+unset od_main

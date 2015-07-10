@@ -1,104 +1,36 @@
 #!/usr/bin/env bash
 
-PWD=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
+# magic path
+ONE_DOT=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
 
-function show_help() {
-cat <<- EOF
-bootstrap [options]
-OPTIONS:
-  -v verbose mode
-  -h help message
-EOF
-}
+# import tools
+source $ONE_DOT/lib
 
-ESC_CODE="\e"
-if [[ "$(uname -s)" == "Darwin" ]];then
-  ESC_CODE="\x1b"
-fi
+function od_main() {
+  # os detection
+  if od_unknown_os;then
+    od_echo_error "Operating system not supported,sorry for that. :("
+    exit
+  fi
 
-function echo_info() {
-  echo -ne "$ESC_CODE[0;34m"
-  echo "$1"
-  echo -ne "$ESC_CODE[0m"
-}
-
-function echo_success() {
-  echo -ne "$ESC_CODE[0;32m"
-  echo "$1"
-  echo -ne "$ESC_CODE[0m"
-}
-
-function echo_error() {
-  echo -ne "$ESC_CODE[0;31m"
-  echo "$1"
-  echo -ne "$ESC_CODE[0m"
-}
-
-function echo_warning() {
-  echo -ne "$ESC_CODE[0;33m"
-  echo "$1"
-  echo -ne "$ESC_CODE[0m"
-}
-
-function echo_ok() {
-  echo_success "[OK]"
-}
-
-function echo_failed() {
-  echo_error "[FAILED]"
-}
-
-function echo_logo() {
-  echo_info "********************************"
-  echo_info "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
-  echo_info "*  ║     ║ ║     ║ ║     ║     *"
-  echo_info "*  ║     ║ ║     ║ ╠═════╝     *"
-  echo_info "*  ║     ║ ║     ║ ║           *"
-  echo_info "*  ╚═════╝ ╩     ╩ ╚═════╝  ♥  *"
-  echo_info "********************************"
-}
-
-function main() {
   # make sure all submodules are initialized
   git submodule update --init --recursive
 
-  OUT_REDIRECT="> /dev/null"
-  case $1 in
-    -v)
-      OUT_REDIRECT="";;
-    -h)
-      show_help
-      ;;
-    *)
-      shift
-      ;;
-  esac
-
-  echo "Welcome to One."
-
-  # OS detection
-  OS_SUFFIX="linux"
-  if [[ "$(uname -s)" == "Darwin" ]];then
-    OS_SUFFIX="osx"
-  fi
+  od_bot "Welcome to One."
+  od_echo_return
 
   # find script named install.sh and or install_os.sh
-  INSTALLERS=$(find "$PWD" -maxdepth 2 -name install.sh)
-  INSTALLERS_SPEC=$(find "$PWD" -maxdepth 2 -name install_$OS_SUFFIX.sh)
-  ALL_INSTALLERS="$INSTALLERS $INSTALLERS_SPEC"
+  BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
 
   # run all scripts
-  for INSTALLER in $ALL_INSTALLERS;do
-    echo -n "Running $INSTALLER ... "
-    if eval source $INSTALLER $OUT_REDIRECT;then
-      echo_ok
-    else
-      echo_error
-    fi
+  for BOOTSTRAP in $BOOTSTRAPS;do
+    eval source $BOOTSTRAP
   done
 
-  echo_logo
-  echo_success "Success!Enjoy One."
+  od_logo
+  od_echo_success "Success!Enjoy One."
 }
 
-main $@
+od_main $@
+
+unset od_main
