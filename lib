@@ -8,11 +8,13 @@ function od_is_osx() {
 }
 
 function od_is_ubuntu() {
+  [[ -e "/etc/issue" ]] || return 1
   [[ "$(cat /etc/issue)" =~ "Ubuntu" ]] || return 1
 }
 
 function od_unknown_os() {
-  (! od_is_ubuntu) || (! od_is_ubuntu) || return 1
+  od_is_osx && return 1
+  od_is_ubuntu && return 1
 }
 
 ##################################################
@@ -61,8 +63,27 @@ function od_info_failed() {
   od_echo_error "[FAILED]"
 }
 
-function od_bot() {
-  echo -e "${OD_FG_CYAN}=。=${OD_COLOR_RESET} - "$1
+function od_bot_normal() {
+  local emoji=[#_#]
+  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
+}
+
+function od_bot_happy() {
+  local emoji=[^_^]
+  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
+}
+
+function od_bot_sad() {
+  local emoji=[T_T]
+  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
+}
+
+function od_bot_done() {
+  od_bot_happy $(od_echo_success "[DONE]")
+}
+
+function od_bot_failed() {
+  od_bot_sad $(od_echo_success "[FAILED]")
 }
 
 function od_logo() {
@@ -79,8 +100,12 @@ function od_logo() {
 ## action functions
 
 function od_link() {
-  echo "linking $1 -> $2"
-  ln -fs "$1" "$2"
+  echo -n "linking $1 -> $2 ... "
+  if ln -fs "$1" "$2";then
+    od_info_ok
+  else
+    od_info_failed
+  fi
 }
 
 function od_linkdir() {
@@ -89,7 +114,7 @@ function od_linkdir() {
     options="-Ffs"
   fi
 
-  echo "linking $1 -> $2 ..."
+  echo -n "linking $1 -> $2 ... "
   if ln $options "$1" "$2";then
     od_info_ok
   else
@@ -98,7 +123,7 @@ function od_linkdir() {
 }
 
 function od_copy() {
-  echo "copying $1 -> $2 ..."
+  echo -n "copying $1 -> $2 ... "
   if cp -r "$1" "$2";then
     od_info_ok
   else
@@ -107,7 +132,7 @@ function od_copy() {
 }
 
 function od_mv() {
-  echo "copying $1 -> $2 ..."
+  echo -n "copying $1 -> $2 ... "
   if mv -r "$1" "$2";then
     od_info_ok
   else
@@ -116,7 +141,7 @@ function od_mv() {
 }
 
 function od_rm() {
-  echo "removing $1 ... "
+  echo -n "removing $1 ... "
   if rm -rf "$1";then
     od_info_ok
   else
@@ -128,8 +153,12 @@ function od_rm() {
 ## packge managers
 
 function od_brew_install() {
-  if ! brew list $1 &> /dev/null;then
-    echo "brew installing $1 ..."
+  if brew list $1 &> /dev/null;then
+    # already installed
+    echo -n "isntalling $1 ... "
+    od_info_ok
+  else
+    echo -n "installing $1 ... "
     if brew install $1 &> /dev/null ;then
       od_info_ok
     else
@@ -139,16 +168,11 @@ function od_brew_install() {
 }
 
 function od_apt_get_install() {
-  echo ""
+  echo -n ""
 }
 
 ##################################################
 ## others
-
-# script path
-function od_pwd() {
-  echo "$(cd "$(dirname "${BASH_SOURCE}")" && pwd)"
-}
 
 # ask for sudo permissions
 function od_sudo() {
