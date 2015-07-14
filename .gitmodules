@@ -2,10 +2,6 @@
 	path = zsh/antigen
 	url = https://github.com/zsh-users/antigen.git
 	branch = master
-[submodule "fonts"]
-	path = fonts
-	url = https://github.com/powerline/fonts.git
-	branch = master
 [submodule "vim/vim/plugins/Vundle.vim"]
 	path = vim/vim/plugins/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
