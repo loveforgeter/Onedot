@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-function od_main() {
-  hash brew && return
+function od_osx_setup() {
+  hash brew &> /dev/null && return
 
   od_bot_normal "installing homebrew ... "
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -9,4 +9,8 @@ function od_main() {
   od_echo_return
 }
 
-od_main $@
+
+# main
+if od_is_osx;then
+  od_osx_setup
+fi

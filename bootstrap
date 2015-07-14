@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # magic path
-ONE_DOT=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
+ONE_DOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # import tools
 source $ONE_DOT/lib
