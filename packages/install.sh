@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function od_ubuntu_setup() {
-  od_bot_normal "installing packages via apt-get"
+  od_echo_info "installing packages via apt-get ..."
   local PACKAGES=(
   build-essential
   g++
@@ -17,13 +17,11 @@ function od_ubuntu_setup() {
   for PACKAGE in ${PACKAGES[*]};do
     od_apt_get_install $PACKAGE
   done
-  od_bot_done
-  od_echo_return
 }
 
 function od_osx_setup() {
   hash brew || (echo "brew not installed" && return)
-  od_bot_normal "installing packages via homebrew"
+  od_echo_info "installing packages via homebrew"
   local PACKAGES=(
   astyle
   autoconf
@@ -50,8 +48,6 @@ function od_osx_setup() {
   for PACKAGE in ${PACKAGES[*]};do
     od_brew_install $PACKAGE
   done
-  od_bot_done
-  od_echo_return
 }
 
 function od_main() {

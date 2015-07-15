@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-CURRENT_PATH=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
-
-function od_main() {
-  hash zsh || (echo "zsh not installed" && return)
-  od_bot_normal "configuring zsh ..."
-  od_link "${CURRENT_PATH}/zshrc" "$HOME/.zshrc"
-  od_bot_done
-  od_echo_return
-}
-
-od_main $@
+od_echo_info "configuring zsh ..."
+hash zsh || (od_echo_error "zsh not found!" && return)
+od_action_link "$(od_pwd)/zshrc" "$HOME/.zshrc"

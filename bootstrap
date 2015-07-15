@@ -6,29 +6,26 @@ ONE_DOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # import tools
 source $ONE_DOT/lib
 
-function od_main() {
-  # os detection
-  if od_unknown_os;then
-    od_echo_error "Operating system not supported,sorry for that. :("
-    exit
-  fi
+# os detection
+if od_unknown_os;then
+  od_echo_error "Operating system not supported,sorry for that. :("
+  exit
+fi
 
-  # make sure all submodules are initialized
-  git submodule update --init --recursive
+# make sure all submodules are initialized
+git submodule update --init --recursive
 
-  echo "Welcome to use One."
+echo "Welcome to use One."
+od_echo_return
+
+# find script named install.sh and or install_os.sh
+BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
+
+# run all scripts
+for BOOTSTRAP in $BOOTSTRAPS;do
+  source $BOOTSTRAP
   od_echo_return
+done
 
-  # find script named install.sh and or install_os.sh
-  BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
-
-  # run all scripts
-  for BOOTSTRAP in $BOOTSTRAPS;do
-    eval source $BOOTSTRAP
-  done
-
-  od_logo
-  od_echo_success "All Done!Enjoy One."
-}
-
-od_main $@
+od_echo_logo
+od_echo_success "All Done!Enjoy One."

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-CURRENT_PATH=$(cd "$(dirname "${BASH_SOURCE}")" && pwd)
-
 ##################################################
 # setup for ubuntu
 function od_ubuntu_setup() {
@@ -18,8 +16,8 @@ function od_ubuntu_setup() {
   fi
 
   # linking settings directory
-  od_rm "$ST_USER_PATH"
-  od_linkdir "${CURRENT_PATH}/settings" "$ST_USER_PATH"
+  od_action_rm "$ST_USER_PATH"
+  od_action_linkdir "$(od_pwd)/settings" "$ST_USER_PATH"
 }
 
 ##################################################
@@ -39,27 +37,21 @@ function od_osx_setup() {
   fi
 
   # linking settings directory
-  od_rm "$ST_USER_PATH"
-  od_linkdir "${CURRENT_PATH}/settings" "$ST_USER_PATH"
+  od_action_rm "$ST_USER_PATH"
+  od_action_linkdir "$(od_pwd)/settings" "$ST_USER_PATH"
 }
 
 
 ##################################################
-function od_main() {
-  od_bot_normal "configuring sublime text"
-  if ! $(hash subl);then
-    echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"
-    return
-  fi
+# main
+od_echo_info "configuring sublime text ..."
+if ! $(hash subl);then
+  echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"
+  return
+fi
 
-  if od_is_osx;then
-    od_osx_setup
-  elif od_is_ubuntu ;then
-    od_ubuntu_setup
-  fi
-  od_bot_done
-  od_echo_return
-}
-
-# run main
-od_main $@
+if od_is_osx;then
+  od_osx_setup
+elif od_is_ubuntu ;then
+  od_ubuntu_setup
+fi

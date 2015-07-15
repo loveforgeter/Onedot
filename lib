@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+OD_INFO_OK="[OK]"
+OD_INFO_FAILED="[FAILED]"
+OD_INFO_ACTION="==>"
+
 ##################################################
 ## os detection
-
 function od_is_osx() {
   [[ "$(uname -s)" == "Darwin" ]] || return 1
 }
@@ -19,7 +22,6 @@ function od_unknown_os() {
 
 ##################################################
 ## colors
-
 OD_ESC_SEQ="\e["
 if od_is_osx;then
   OD_ESC_SEQ="\x1b["
@@ -34,59 +36,44 @@ OD_FG_MAGENTA=$OD_ESC_SEQ"0;35m"
 OD_FG_CYAN=$OD_ESC_SEQ"0;36m"
 
 ##################################################
-## print functions
+## echo functions
+
+# colored echo
+function od_echo_colored() {
+  echo -e "$1$2${OD_COLOR_RESET}"
+}
+
+# stats
 function od_echo_info() {
-  echo -e "${OD_FG_BLUE}$1${OD_COLOR_RESET}"
+  od_echo_colored ${OD_FG_BLUE} "$1"
 }
 
 function od_echo_success() {
-  echo -e "${OD_FG_GREEN}$1${OD_COLOR_RESET}"
+  od_echo_colored ${OD_FG_GREEN} "$1"
 }
 
 function od_echo_warn() {
-  echo -e "${OD_FG_YELLOW}$1${OD_COLOR_RESET}"
+  od_echo_colored ${OD_FG_YELLOW} "$1"
 }
 
 function od_echo_error() {
-  echo -e "${OD_FG_RED}$1${OD_COLOR_RESET}"
+  od_echo_colored ${OD_FG_RED} "$1"
 }
 
+# others
 function od_echo_return() {
   echo ""
 }
 
-function od_info_ok() {
-  od_echo_success "[OK]"
+function od_echo_exec_stat() {
+  if [[ $? == 0 ]];then
+    od_echo_success ${OD_INFO_OK}
+  else
+    od_echo_error ${OD_INFO_FAILED}
+  fi
 }
 
-function od_info_failed() {
-  od_echo_error "[FAILED]"
-}
-
-function od_bot_normal() {
-  local emoji=[#_#]
-  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
-}
-
-function od_bot_happy() {
-  local emoji=[^_^]
-  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
-}
-
-function od_bot_sad() {
-  local emoji=[T_T]
-  echo -e "${OD_FG_CYAN}$emoji${OD_COLOR_RESET} - "$1
-}
-
-function od_bot_done() {
-  od_bot_happy $(od_echo_success "[DONE]")
-}
-
-function od_bot_failed() {
-  od_bot_sad $(od_echo_success "[FAILED]")
-}
-
-function od_logo() {
+function od_echo_logo() {
   od_echo_info "********************************"
   od_echo_info "*  ╔═════╗ ╦═════╗ ╔═════╗     *"
   od_echo_info "*  ║     ║ ║     ║ ║     ║     *"
@@ -98,55 +85,39 @@ function od_logo() {
 
 ##################################################
 ## action functions
-
-function od_link() {
-  echo -n "linking $1 -> $2 ... "
-  if ln -fs "$1" "$2";then
-    od_info_ok
-  else
-    od_info_failed
-  fi
+function od_action_link() {
+  echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) linking $1 -> $2 ... "
+  ln -fs "$1" "$2"
+  od_echo_exec_stat
 }
 
-function od_linkdir() {
+function od_action_linkdir() {
   local options="-dfs"
   if od_is_osx;then
     options="-Ffs"
   fi
 
-  echo -n "linking $1 -> $2 ... "
-  if ln $options "$1" "$2";then
-    od_info_ok
-  else
-    od_info_failed
-  fi
+  echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) linking $1 -> $2 ... "
+  ln $options "$1" "$2"
+  od_echo_exec_stat
 }
 
-function od_copy() {
-  echo -n "copying $1 -> $2 ... "
-  if cp -r "$1" "$2";then
-    od_info_ok
-  else
-    od_info_failed
-  fi
+function od_action_copy() {
+  echo -n "$(od_echo_colored ${OD_FG_YELLOW} ${OD_INFO_ACTION}) copying $1 -> $2 ... "
+  cp -r "$1" "$2"
+  od_echo_exec_stat
 }
 
-function od_mv() {
-  echo -n "copying $1 -> $2 ... "
-  if mv -r "$1" "$2";then
-    od_info_ok
-  else
-    od_info_failed
-  fi
+function od_action_mv() {
+  echo -n "$(od_echo_colored ${OD_FG_YELLOW} ${OD_INFO_ACTION}) moving $1 -> $2 ... "
+  mv -r "$1" "$2"
+  od_echo_exec_stat
 }
 
-function od_rm() {
-  echo -n "removing $1 ... "
-  if rm -rf "$1";then
-    od_info_ok
-  else
-    od_info_failed
-  fi
+function od_action_rm() {
+  echo -n "$(od_echo_colored ${OD_FG_RED} ${OD_INFO_ACTION}) removing $1 ... "
+  rm -rf "$1"
+  od_echo_exec_stat
 }
 
 ##################################################
@@ -155,15 +126,12 @@ function od_rm() {
 function od_brew_install() {
   if brew list $1 &> /dev/null;then
     # already installed
-    echo -n "isntalling $1 ... "
-    od_info_ok
+    echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) installing $1 ... "
+    od_echo_exec_stat
   else
-    echo -n "installing $1 ... "
-    if brew install $1 &> /dev/null ;then
-      od_info_ok
-    else
-      od_info_failed
-    fi
+    echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) installing $1 ... "
+    brew install $1 &> /dev/null
+    od_echo_exec_stat
   fi
 }
 
