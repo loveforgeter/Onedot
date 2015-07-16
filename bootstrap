@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # magic path
 ONE_DOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
@@ -16,7 +18,6 @@ fi
 git submodule update --init --recursive
 
 echo "Welcome to use One."
-od_echo_return
 
 # find script named install.sh and or install_os.sh
 BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
@@ -24,8 +25,8 @@ BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
 # run all scripts
 for BOOTSTRAP in $BOOTSTRAPS;do
   source $BOOTSTRAP
-  od_echo_return
 done
 
+echo ""
 od_echo_logo
 od_echo_success "All Done!Enjoy One."

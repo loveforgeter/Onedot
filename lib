@@ -61,10 +61,6 @@ function od_echo_error() {
 }
 
 # others
-function od_echo_return() {
-  echo ""
-}
-
 function od_echo_exec_stat() {
   if [[ $? == 0 ]];then
     od_echo_success ${OD_INFO_OK}
@@ -120,23 +116,29 @@ function od_action_rm() {
   od_echo_exec_stat
 }
 
+function od_action_exec() {
+  echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) running $1 ... "
+  source $1 &> /dev/null
+  od_echo_exec_stat
+}
+
 ##################################################
 ## packge managers
 
 function od_brew_install() {
-  if brew list $1 &> /dev/null;then
-    # already installed
-    echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) installing $1 ... "
-    od_echo_exec_stat
-  else
-    echo -n "$(od_echo_colored ${OD_FG_CYAN} ${OD_INFO_ACTION}) installing $1 ... "
+  echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) installing $1 ... "
+  if ! brew list $1 &> /dev/null;then
     brew install $1 &> /dev/null
-    od_echo_exec_stat
   fi
+  od_echo_exec_stat
 }
 
 function od_apt_get_install() {
-  echo -n ""
+  echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) installing $1 ... "
+  if ! dpkg -l $1 &> /dev/null;then
+    sudo apt-get install -y $1
+  fi
+  od_echo_exec_stat
 }
 
 ##################################################

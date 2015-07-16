@@ -24,9 +24,6 @@ function od_osx_setup() {
   od_echo_info "installing packages via homebrew"
   local PACKAGES=(
   astyle
-  autoconf
-  automake
-  clang-format
   cmake
   coreutils
   cscope
@@ -34,12 +31,8 @@ function od_osx_setup() {
   gcc
   httpie
   node
-  openssl
-  pkg-config
-  python
   python3
   ruby
-  sqlite
   vim
   wget
   xctool
