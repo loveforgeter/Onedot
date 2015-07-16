@@ -34,10 +34,15 @@ OD_FG_YELLOW=$OD_ESC_SEQ"0;33m"
 OD_FG_BLUE=$OD_ESC_SEQ"0;34m"
 OD_FG_MAGENTA=$OD_ESC_SEQ"0;35m"
 OD_FG_CYAN=$OD_ESC_SEQ"0;36m"
+OD_FG_RED_BOLD=$OD_ESC_SEQ"1;31m"
+OD_FG_GREEN_BOLD=$OD_ESC_SEQ"1;32m"
+OD_FG_YELLOW_BOLD=$OD_ESC_SEQ"1;33m"
+OD_FG_BLUE_BOLD=$OD_ESC_SEQ"1;34m"
+OD_FG_MAGENTA_BOLD=$OD_ESC_SEQ"1;35m"
+OD_FG_CYAN_BOLD=$OD_ESC_SEQ"1;36m"
 
 ##################################################
 ## echo functions
-
 # colored echo
 function od_echo_colored() {
   echo -e "$1$2${OD_COLOR_RESET}"
@@ -124,7 +129,6 @@ function od_action_exec() {
 
 ##################################################
 ## packge managers
-
 function od_brew_install() {
   echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) installing $1 ... "
   if ! brew list $1 &> /dev/null;then
@@ -141,9 +145,20 @@ function od_apt_get_install() {
   od_echo_exec_stat
 }
 
+function od_gem_install() {
+  if gem list -i $1 &> /dev/null;then
+    # already installed
+    echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) installing $1 ... "
+    od_echo_exec_stat
+  else
+    echo -n "$(od_echo_colored ${OD_FG_GREEN} ${OD_INFO_ACTION}) installing $1 ... "
+    gem install $1 &> /dev/null
+    od_echo_exec_stat
+  fi
+}
+
 ##################################################
 ## others
-
 # script path
 function od_pwd() {
   cd "$(dirname "${BASH_SOURCE[1]}")" && pwd
@@ -156,4 +171,12 @@ function od_sudo() {
 
   # Keep-alive: update existing sudo time stamp until the script has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}
+
+# check command
+function od_has() {
+  if hash $1 &> /dev/null;then
+    return
+  fi
+  return 1
 }
