@@ -20,8 +20,9 @@ function od_ubuntu_setup() {
 }
 
 function od_osx_setup() {
-  hash brew || (echo "brew not installed" && return)
-  od_echo_info "installing packages via homebrew"
+  # install packages via home brew
+  od_has brew || (echo "brew not installed" && return)
+  od_echo_info "installing packages via homebrew ..."
   local PACKAGES=(
   astyle
   autoconf
@@ -36,7 +37,6 @@ function od_osx_setup() {
   node
   openssl
   pkg-config
-  python
   python3
   ruby
   sqlite
@@ -48,14 +48,16 @@ function od_osx_setup() {
   for PACKAGE in ${PACKAGES[*]};do
     od_brew_install $PACKAGE
   done
-}
 
-function od_main() {
-  if od_is_osx;then
-    od_osx_setup
-  elif od_is_ubuntu;then
-    od_ubuntu_setup
+  # install cocoapods,requires ruby
+  if od_has gem;then
+    od_gem_install cocoapods
   fi
 }
 
-od_main $@
+# main
+if od_is_osx;then
+  od_osx_setup
+elif od_is_ubuntu;then
+  od_ubuntu_setup
+fi

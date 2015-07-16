@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# exit when error occurs
+set -e
+
 # magic path
 ONE_DOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
@@ -23,6 +26,7 @@ BOOTSTRAPS=$(find $ONE_DOT -maxdepth 2 -name install.sh)
 
 # run all scripts
 for BOOTSTRAP in $BOOTSTRAPS;do
+  od_echo_error $BOOTSTRAP
   source $BOOTSTRAP
   od_echo_return
 done
