@@ -32,6 +32,7 @@ function od_osx_setup() {
   gcc
   httpie
   node
+	proxychains-ng
   python3
   ruby
   vim

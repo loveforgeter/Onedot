@@ -4,9 +4,3 @@ od_echo_info "configuring vim ..."
 od_action_rm $HOME/.vim
 od_action_linkdir $(od_pwd)/vim $HOME/.vim
 od_action_link $(od_pwd)/vimrc $HOME/.vimrc
-
-# install vim plugins
-vim +VundleInstall +qa
-
-# install YCM
-source "$(od_pwd)/vim/plugins/YouCompleteMe/install.sh"
