@@ -45,6 +45,10 @@ function od_osx_setup() {
 ##################################################
 # main
 od_echo_info "configuring sublime text ..."
+if od_is_osx;then
+  od_action_link "/Applications/Sublime Text.app/Contents/MacOS/Sublime Text" "/usr/local/bin/subl"
+fi
+
 if ! $(hash subl);then
   echo "Sublime Text is not installed!Get it at here -> http://www.sublimetext.com"
   return
