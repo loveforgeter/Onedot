@@ -10,3 +10,5 @@ source $PWD/dircolors.zsh
 
 # env
 source $PWD/env.zsh
+
+alias pc=proxychains4
