@@ -9,6 +9,7 @@
 	"installed_packages":
 	[
 		"All Autocomplete",
+		"API Blueprint",
 		"Base16 Color Schemes",
 		"Bash Build System",
 		"Better CoffeeScript",
@@ -19,6 +20,7 @@
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"Emmet",
+		"EsFormatter",
 		"FileDiffs",
 		"Git",
 		"GitGutter",
@@ -30,13 +32,18 @@
 		"jQuery",
 		"JsFormat",
 		"JSONLint",
+		"JSX",
 		"LESS",
+		"LiveReload",
+		"Lua Dev",
 		"Markdown Preview",
 		"MarkdownEditing",
 		"Package Control",
 		"Predawn",
 		"Pretty JSON",
+		"Pretty YAML",
 		"Protocol Buffer Syntax",
+		"ReactJS",
 		"Sass",
 		"SASS Build",
 		"SassBeautify",
@@ -47,6 +54,7 @@
 		"Theme - Flatland",
 		"Theme - Soda",
 		"Theme - Spacegray",
-		"VAlign"
+		"VAlign",
+		"View In Browser"
 	]
 }

@@ -20,3 +20,5 @@
   untracked = magenta normal
 [color]
   ui = true
+[core]
+	quotepath = false

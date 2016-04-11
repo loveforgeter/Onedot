@@ -8,5 +8,8 @@ source $PWD/antigen.zsh
 # beautiful ls colors
 source $PWD/dircolors.zsh
 
+# env
+source $PWD/env.zsh
+
 # user custom enviroment
 source $PWD/user.zsh &> /dev/null
