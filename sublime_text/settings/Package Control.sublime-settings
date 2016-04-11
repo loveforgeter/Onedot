@@ -1,6 +1,10 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"Git",
+		"GoSublime",
+		"SideBarEnhancements"
 	],
 	"installed_packages":
 	[

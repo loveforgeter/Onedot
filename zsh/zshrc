@@ -7,3 +7,6 @@ source $PWD/antigen.zsh
 
 # beautiful ls colors
 source $PWD/dircolors.zsh
+
+# user custom enviroment
+source $PWD/user.zsh &> /dev/null
