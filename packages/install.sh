@@ -24,18 +24,11 @@ function od_osx_setup() {
   od_has brew || (echo "brew not installed" && return)
   od_echo_info "installing packages via homebrew ..."
   local PACKAGES=(
-  astyle
   cmake
   coreutils
-  cscope
-  ctags
-  gcc
   httpie
   node
 	proxychains-ng
-  python3
-  ruby
-  vim
   wget
   xctool
   )
