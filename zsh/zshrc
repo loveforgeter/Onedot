@@ -3,7 +3,7 @@
 PWD=$(dirname ${${(%):-%x}:A})
 
 # user custom enviroment
-source $PWD/user.zsh &> /dev/null
+source $PWD/user.zsh
 
 # use antigen to manage zsh plugins
 source $PWD/antigen.zsh

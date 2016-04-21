@@ -9,7 +9,8 @@ call vundle#begin('~/.vim/plugins')
 Plugin 'gmarik/Vundle.vim'
 
 " my favorite plugins
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'chriskempson/vim-tomorrow-theme'
