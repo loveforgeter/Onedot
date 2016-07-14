@@ -2,9 +2,6 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"Git",
-		"GoSublime",
-		"SideBarEnhancements"
 	],
 	"installed_packages":
 	[
@@ -38,6 +35,8 @@
 		"Lua Dev",
 		"Markdown Preview",
 		"MarkdownEditing",
+		"Material Theme",
+		"One Dark Color Scheme",
 		"Package Control",
 		"Predawn",
 		"Pretty JSON",
@@ -51,7 +50,6 @@
 		"Seti_UX",
 		"SideBarEnhancements",
 		"Text Pastry",
-		"Theme - Flatland",
 		"Theme - Soda",
 		"Theme - Spacegray",
 		"VAlign",

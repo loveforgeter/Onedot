@@ -2,7 +2,7 @@
 	"always_show_minimap_viewport": true,
 	"auto_find_in_selection": true,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/One Dark Color Scheme/One Dark.tmTheme",
 	"default_line_ending": "unix",
 	"draw_minimap_border": true,
 	"draw_white_space": "all",
@@ -20,16 +20,14 @@
 	[
 		".git"
 	],
-	"font_size": 17,
+	"font_face": "Fira Mono",
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Git",
-		"GoSublime",
 		"Markdown",
 		"Numix Theme",
-		"SideBarEnhancements",
 		"Vintage"
 	],
 	"line_padding_bottom": 1,
