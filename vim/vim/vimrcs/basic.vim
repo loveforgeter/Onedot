@@ -51,7 +51,7 @@ set backspace=indent,eol,start
 " arrow key go to prev/next line
 set whichwrap+=<,>,h,l,[,]
 
-" colorscheme Tomorrow-Night
-" nice monokai colorscheme
-colorscheme molokai
+" themes
+" colorscheme molokai
+colorscheme onedark
 let g:rehash256=1
