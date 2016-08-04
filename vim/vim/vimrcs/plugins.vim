@@ -29,6 +29,7 @@ Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'joshdick/airline-onedark.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
