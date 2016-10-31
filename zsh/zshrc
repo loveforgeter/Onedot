@@ -14,6 +14,8 @@ source $PWD/dircolors.zsh
 # env
 source $PWD/env.zsh
 
+source $PWD/keybindings.zsh
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/Library/Android/sdk/tools

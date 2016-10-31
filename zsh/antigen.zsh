@@ -17,6 +17,7 @@ antigen bundle git-flow
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
 # antigen theme https://gist.github.com/ec8dfabce7f1fc5ef77e.git agnoster
