@@ -3,6 +3,8 @@ syntax enable
 " show line number
 set number
 
+set expandtab
+
 " use cindent
 set cindent
 

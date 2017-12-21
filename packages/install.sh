@@ -36,11 +36,6 @@ function od_osx_setup() {
   for PACKAGE in ${PACKAGES[*]};do
     od_brew_install $PACKAGE
   done
-
-  # install cocoapods,requires ruby
-  if od_has gem;then
-    od_gem_install cocoapods
-  fi
 }
 
 # main

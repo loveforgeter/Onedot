@@ -18,4 +18,10 @@ source $PWD/keybindings.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools:$HOME/Library/Android/sdk/tools
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+export PATH=$HOME/.composer/vendor/bin:$PATH
+eval "$(rbenv init -)"
+eval $(thefuck --alias)
+
+export PATH=/Library/TeX/texbin:$PATH

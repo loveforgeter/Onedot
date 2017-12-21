@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"ayu",
 		"Base16 Color Schemes",
 		"BracketHighlighter",
 		"Cscope",
@@ -12,13 +13,17 @@
 		"DocBlockr",
 		"Emmet",
 		"GitGutter",
-		"Material Theme",
+		"Materialize",
 		"One Dark Color Scheme",
 		"Package Control",
+		"Predawn",
+		"Seti_UI",
 		"SideBarEnhancements",
 		"SublimeLinter-php",
 		"Text Pastry",
+		"Theme - Afterglow",
 		"Theme - Soda",
-		"Theme - Spacegray"
+		"Theme - Spacegray",
+		"VAlign"
 	]
 }
