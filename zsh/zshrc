@@ -3,25 +3,11 @@
 PWD=$(dirname ${${(%):-%x}:A})
 
 # user custom enviroment
-source $PWD/user.zsh
+source $PWD/bootstrap.zsh
 
-# use antigen to manage zsh plugins
-source $PWD/antigen.zsh
-
-# beautiful ls colors
-source $PWD/dircolors.zsh
-
-# env
-source $PWD/env.zsh
-
-source $PWD/keybindings.zsh
-
+# others
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 export PATH=$HOME/.composer/vendor/bin:$PATH
 eval "$(rbenv init -)"
 eval $(thefuck --alias)
-
-export PATH=/Library/TeX/texbin:$PATH

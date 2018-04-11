@@ -16,7 +16,7 @@ antigen bundle git
 antigen bundle history
 antigen bundle laravel
 antigen bundle pip
-antigen bundle supercrabtree/k
+
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
