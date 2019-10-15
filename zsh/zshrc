@@ -2,12 +2,27 @@
 
 PWD=$(dirname ${${(%):-%x}:A})
 
-# user custom enviroment
+# bootstrap
 source $PWD/bootstrap.zsh
 
 # others
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH=$HOME/.composer/vendor/bin:$PATH
+eval "$(pyenv init -)"
 eval "$(rbenv init -)"
 eval $(thefuck --alias)
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:${PATH}
+export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/Cellar/flutter/bin:$PATH
+export PATH=/usr/local/opt/llvm/bin:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/Cellar/flutter/.pub-cache/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
