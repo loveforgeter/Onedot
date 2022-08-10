@@ -1,9 +1,0 @@
-*
-!.gitignore
-!*.sublime-build
-!*.sublime-commands
-!*.sublime-completions
-!*.sublime-keymap
-!*.sublime-settings
-GoSublime-aux.sublime-settings
-TextPastryHistory.sublime-settings

@@ -1,7 +1,7 @@
 proxy() {
   export http_proxy=http://127.0.0.1:1087; 
   export https_proxy=http://127.0.0.1:1087;
-  export no_proxy=http://127.0.0.1;
+  export no_proxy="localhost,*.bilibili.co";
 }
 
 noproxy() {
