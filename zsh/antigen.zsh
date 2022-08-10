@@ -27,8 +27,8 @@ antigen bundle zsh-users/zsh-history-substring-search
 # Load the theme.
 # antigen bundle mafredri/zsh-async
 # antigen bundle sindresorhus/pure
-# antigen theme https://gist.github.com/ec8dfabce7f1fc5ef77e.git agnoster
 # antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
-antigen theme oskarkrawczyk/honukai-iterm-zsh honukai
+antigen theme romkatv/powerlevel10k
+# antigen theme oskarkrawczyk/honukai-iterm-zsh honukai
 
 antigen apply

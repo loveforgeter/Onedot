@@ -17,14 +17,21 @@ export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 # Flutter & Dart
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
-export FLUTTER_ROOT=$HOME/Cellar/flutter
-export FLUTTER_HOME=$HOME/Cellar/flutter/bin
-FLUTTER_PUB_BIN=$FLUTTER_ROOT/.pub-cache/bin
-export PATH=$FLUTTER_PUB_BIN:$FLUTTER_HOME:$PATH
 
-PUB_BIN=$HOME/.pub-cache/bin
-export PATH=$PUB_BIN:$PATH
+export FLUTTER_ROOT=/opt/flutter
+export FLUTTER_HOME=$FLUTTER_ROOT/bin
+export PATH=$FLUTTER_HOME:$PATH
+
+FLUTTER_DART_ROOT=$FLUTTER_HOME/cache/dart-sdk
+FLUTTER_DART_HOME=$FLUTTER_DART_ROOT/bin
+export PATH=$FLUTTER_DART_HOME:$PATH
 
 # LLVM
 LLVM_BIN=/usr/local/opt/llvm/bin
 export PATH=$LLVM_BIN:$PATH
+
+# depot_tools
+export PATH=/opt/depot_tools:$PATH
+
+# WebP
+export PATH=/opt/webp/bin:$PATH
