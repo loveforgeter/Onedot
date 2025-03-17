@@ -1,7 +1,9 @@
+
 LOCAL_BIN=/usr/local/bin
 LOCAL_SBIN=/usr/local/sbin
+HOMEBREW_BIN=/opt/homebrew/bin
 USER_BIN=$HOME/.bin
-export PATH=$USER_BIN:$LOCAL_BIN:$LOCAL_SBIN:$CARGO_BIN:$PATH
+export PATH=$USER_BIN:$HOMEBREW_BIN:$LOCAL_BIN:$LOCAL_SBIN:$CARGO_BIN:$PATH
 
 # Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
