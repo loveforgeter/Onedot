@@ -1,7 +1,8 @@
+BREW_BIN=/opt/homebrew/bin
 LOCAL_BIN=/usr/local/bin
 LOCAL_SBIN=/usr/local/sbin
 USER_BIN=$HOME/.bin
-export PATH=$USER_BIN:$LOCAL_BIN:$LOCAL_SBIN:$CARGO_BIN:$PATH
+export PATH=$USER_BIN:$BREW_BIN:$LOCAL_BIN:$LOCAL_SBIN:$CARGO_BIN:$PATH
 
 # Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
@@ -35,3 +36,7 @@ export PATH=/opt/depot_tools:$PATH
 
 # WebP
 export PATH=/opt/webp/bin:$PATH
+
+# Homebrew
+export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
