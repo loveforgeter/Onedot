@@ -1,3 +1,3 @@
 alias finder='open -a Finder'
-alias ls='exa'
+alias ls='eza'
 alias xcode='open -a Xcode'
