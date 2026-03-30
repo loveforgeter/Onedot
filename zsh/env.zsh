@@ -37,3 +37,8 @@ export PATH=/opt/depot_tools:$PATH
 
 # WebP
 export PATH=/opt/webp/bin:$PATH
+
+# Homebrew
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_INSTALL_FROM_API=1

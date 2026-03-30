@@ -26,6 +26,7 @@ antigen bundle macos
 antigen bundle node
 antigen bundle npm
 antigen bundle pip
+antigen bundle pod
 antigen bundle rbenv
 antigen bundle safe-paste
 antigen bundle sudo
@@ -40,6 +41,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
-antigen theme romkatv/powerlevel10k
+# antigen theme romkatv/powerlevel10k
 
 antigen apply
