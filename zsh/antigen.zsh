@@ -41,6 +41,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 
 # Load the theme.
-# antigen theme romkatv/powerlevel10k
+antigen theme romkatv/powerlevel10k
 
 antigen apply
