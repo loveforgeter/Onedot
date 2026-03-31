@@ -1,6 +1,6 @@
-PWD="$( cd "$(dirname $0)" && pwd )"
+ZSH_DIR="$( cd "$(dirname $0)" && pwd )"
 
-source $PWD/antigen/antigen.zsh
+source $ZSH_DIR/antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -18,20 +18,30 @@ antigen bundle dirhistory
 antigen bundle extract
 antigen bundle eza
 antigen bundle fzf
+antigen bundle gcloud
 antigen bundle git
+antigen bundle gitignore
 antigen bundle history
 antigen bundle Homebrew/homebrew-services
+antigen bundle httpie
 antigen bundle laravel
 antigen bundle macos
+antigen bundle man
+antigen bundle nmap
 antigen bundle node
 antigen bundle npm
 antigen bundle pip
 antigen bundle pod
+antigen bundle pyenv
 antigen bundle rbenv
 antigen bundle safe-paste
 antigen bundle sudo
 antigen bundle thefuck
+antigen bundle starship
+antigen bundle uv
+antigen bundle vscode
 antigen bundle web-search
+antigen bundle xcode
 antigen bundle z
 
 # Other bundles
@@ -39,8 +49,5 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
-
-# Load the theme.
-antigen theme romkatv/powerlevel10k
 
 antigen apply

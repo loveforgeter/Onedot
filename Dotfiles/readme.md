@@ -1,3 +1,0 @@
-Onedot
-======
-amazing dotfiles

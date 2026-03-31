@@ -1,3 +1,0 @@
-/plugins/*
-!/plugins/Vundle.vim
-.netrwhist

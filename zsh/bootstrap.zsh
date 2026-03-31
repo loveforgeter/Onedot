@@ -1,9 +1,8 @@
-PWD=$(dirname ${${(%):-%x}:A})
+ZSH_DIR=$(dirname ${${(%):-%x}:A})
 
-# source $PWD/dircolors.zsh
-source $PWD/env.zsh
-source $PWD/antigen.zsh
-source $PWD/keybindings.zsh
-source $PWD/aliases.zsh
-source $PWD/functions.zsh
-test -f $PWD/user.zsh && source $PWD/user.zsh
+source $ZSH_DIR/env.zsh
+source $ZSH_DIR/antigen.zsh
+source $ZSH_DIR/keybindings.zsh
+source $ZSH_DIR/aliases.zsh
+source $ZSH_DIR/functions.zsh
+test -f $ZSH_DIR/user.zsh && source $ZSH_DIR/user.zsh
