@@ -141,6 +141,3 @@ function! VisualSelection(direction, extra_filter) range
 	let @/ = l:pattern
 	let @" = l:saved_reg
 endfunction
-
-" add other key maps
-runtime plugin_maps/cscope_maps.vim

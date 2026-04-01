@@ -1,9 +1,9 @@
-function TrimTrailingSpace()
+function! TrimTrailingSpace()
 	%s/\s\+$//e
-:endfunction
+endfunction
 
-function SudoSave()
-	w !sudo tee %
-:endfunction
+function! SudoSave()
+	w !sudo tee % > /dev/null
+endfunction
 
 
