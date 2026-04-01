@@ -1,3 +1,9 @@
+# Personal aliases
+
+# Finder
 alias finder='open -a Finder'
-alias ls='eza'
+
+# Xcode
 alias xcode='open -a Xcode'
+
+alias ls='eza'

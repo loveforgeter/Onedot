@@ -32,7 +32,6 @@ antigen bundle node
 antigen bundle npm
 antigen bundle pip
 antigen bundle pod
-antigen bundle pyenv
 antigen bundle rbenv
 antigen bundle safe-paste
 antigen bundle sudo

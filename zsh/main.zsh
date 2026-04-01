@@ -1,16 +1,25 @@
 #!/usr/bin/env zsh
 
 # =============================================================================
-# Environment Variables
+# Locale
 # =============================================================================
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
-export PATH="$HOME/.local/bin:$PATH"
 
+# =============================================================================
+# Base PATH
+# =============================================================================
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
+# =============================================================================
+# Pyenv
+# =============================================================================
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - -zsh)"
 
 # =============================================================================
 # Bootstrap
@@ -19,6 +28,18 @@ ZSH_DIR=$(dirname ${${(%):-%x}:A})
 source "$ZSH_DIR/bootstrap.zsh"
 
 # =============================================================================
-# Secrets (optional overrides)
+# Secrets (optional)
 # =============================================================================
 [[ -f ~/.zsh.secrets ]] && source ~/.zsh.secrets
+
+# =============================================================================
+# Bun
+# =============================================================================
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# =============================================================================
+# Claude Memory
+# =============================================================================
+alias claude-mem='/Users/final/.bun/bin/bun "/Users/final/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
