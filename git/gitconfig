@@ -1,36 +1,42 @@
 [alias]
-  br = branch
-  clear = clean -df
-  cm = commit -m
-  co = checkout
-  last = log -1
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  st = status
-  unstage = reset HEAD
-  recover = reset --hard HEAD
-  track = checkout --track
+	br = branch
+	clear = clean -df
+	cm = commit -m
+	co = checkout
+	last = log -1
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	st = status
+	unstage = reset HEAD
+	recover = reset --hard HEAD
+	track = checkout --track
 	create-pull-request = !sh -c 'stash pull-request $0 $@'
+	undo = reset HEAD~1
+	amend = commit --amend
+	who = log -1 --pretty=format:'%an <%ae>'
 [push]
-  default = simple
+	default = simple
+	followTags = true
+[pull]
+	rebase = false
+[fetch]
+	prune = true
 [color "status"]
-  header = blue normal
-  branch = white blue ul
-  nobranch = yellow normal
-  added = green normal
-  changed = red normal
-  untracked = magenta normal
+	header = blue normal
+	branch = white blue ul
+	nobranch = yellow normal
+	added = green normal
+	changed = red normal
+	untracked = magenta normal
 [color]
-  ui = true
+	ui = true
 [core]
 	quotepath = false
 	editor = vim
 	excludesfile = /Users/Final/.gitignore_global
-[user]
-	name = loveforgeter
-	email = loveforgeter@gmail.com
+	autocrlf = input
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	cmd = opendiff "$LOCAL" "$REMOTE"
+	path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"
 	trustExitCode = true
