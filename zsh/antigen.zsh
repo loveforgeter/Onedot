@@ -38,7 +38,6 @@ antigen bundle safe-paste
 antigen bundle sudo
 antigen bundle thefuck
 antigen bundle starship
-antigen bundle uv
 antigen bundle vscode
 antigen bundle web-search
 antigen bundle xcode
