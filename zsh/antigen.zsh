@@ -36,7 +36,6 @@ antigen bundle rbenv
 antigen bundle safe-paste
 antigen bundle sudo
 antigen bundle thefuck
-antigen bundle starship
 antigen bundle vscode
 antigen bundle web-search
 antigen bundle xcode
@@ -47,5 +46,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
+
+if [[ "$TERM_PROGRAM" != "WarpTerminal" ]]; then
+  antigen bundle starship
+fi
 
 antigen apply
