@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 # =============================================================================
 # Locale
 # =============================================================================
@@ -8,38 +6,22 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 # =============================================================================
-# Base PATH
-# =============================================================================
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-
-# =============================================================================
-# Pyenv
-# =============================================================================
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - -zsh)"
-
-# =============================================================================
 # Bootstrap
 # =============================================================================
 ZSH_DIR=$(dirname ${${(%):-%x}:A})
 source "$ZSH_DIR/bootstrap.zsh"
 
 # =============================================================================
-# Secrets (optional)
+# Env
 # =============================================================================
-[[ -f ~/.zsh.secrets ]] && source ~/.zsh.secrets
+[[ -f ~/.env ]] && source ~/.env
 
 # =============================================================================
-# Bun
+# Pyenv
 # =============================================================================
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+eval "$(pyenv init --path)"
 
 # =============================================================================
-# Claude Memory
+# OpenCode
 # =============================================================================
-alias claude-mem='/Users/final/.bun/bin/bun "/Users/final/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+export OPENCODE_DISABLE_CLAUDE_CODE=1

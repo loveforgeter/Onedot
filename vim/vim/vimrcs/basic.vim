@@ -30,15 +30,6 @@ set showmatch                 " Highlight matching brackets
 set matchtime=2               " Match highlight time (tenths of a second)
 
 " -----------------------------------------------------------------------------
-" Colors
-" -----------------------------------------------------------------------------
-if has('termguicolors')
-    set termguicolors         " Enable true color support
-endif
-colorscheme onedark
-let g:rehash256=1
-
-" -----------------------------------------------------------------------------
 " Tabs & Indentation
 " -----------------------------------------------------------------------------
 set expandtab                 " Use spaces instead of tabs

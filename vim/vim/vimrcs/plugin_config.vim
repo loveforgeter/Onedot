@@ -16,7 +16,7 @@ let g:syntastic_mode_map = {'mode': 'passive'}
 " Vim-Airline - Status bar
 " -----------------------------------------------------------------------------
 let g:airline_powerline_fonts = 1
-let g:airline_theme = "onedark"
+let g:airline_theme = "ayu_dark"
 let g:airline#extensions#tabline#enabled = 1        " Show buffer tabs
 let g:airline#extensions#tabline#fnamemod = ':t'    " Show only filename
 let g:airline#extensions#branch#enabled = 1         " Show git branch
@@ -187,3 +187,10 @@ let g:autoformat_on_save = 0                      " Don't auto format on save
 " -----------------------------------------------------------------------------
 let g:dart_format_on_save = 1                     " Format on save
 let g:dart_complete_unknown = 1                   " Complete unknown
+
+" -----------------------------------------------------------------------------
+" Theme
+" -----------------------------------------------------------------------------
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu

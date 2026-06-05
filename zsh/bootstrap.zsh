@@ -1,7 +1,7 @@
 ZSH_DIR=$(dirname ${${(%):-%x}:A})
 
 source $ZSH_DIR/env.zsh
-source $ZSH_DIR/antigen.zsh
+source $ZSH_DIR/plugins.zsh
 source $ZSH_DIR/keybindings.zsh
 source $ZSH_DIR/aliases.zsh
 source $ZSH_DIR/functions.zsh

@@ -1,19 +1,33 @@
-export PATH=$HOME/.local/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH
+# Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CACHE_DIR="$ZSH/cache"
+
+# Bin
+export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
+
+# Brew
+export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
+# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+# export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 # Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 
-# LLVM
-export PATH=/usr/local/opt/llvm/bin:$PATH
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Homebrew
-BREW_BIN=/opt/homebrew/bin
-BREW_SBIN=/opt/homebrew/sbin
-export PATH=$BREW_BIN:$BREW_SBIN:$PATH
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-export HOMEBREW_INSTALL_FROM_API=1
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
