@@ -9,7 +9,7 @@
         <string>/bin/bash</string>
         <string>-l</string>
         <string>-c</string>
-        <string>source "$HOME/.zshrc" &>/dev/null; exec "$HOME/One/LaunchAgents/brew-update-script.sh"</string>
+        <string>source "$HOME/.zshrc" &>/dev/null; exec "{{SCRIPT_PATH}}"</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
