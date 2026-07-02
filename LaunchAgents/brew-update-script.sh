@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# Set proxy if needed
-export http_proxy="http://127.0.0.1:7890"
-export https_proxy="http://127.0.0.1:7890"
+# Set proxy if configured via environment variable (e.g. export BREW_PROXY=http://127.0.0.1:7890)
+if [ -n "$BREW_PROXY" ]; then
+  export http_proxy="$BREW_PROXY"
+  export https_proxy="$BREW_PROXY"
+fi
 
 # Log file setup
 LOG_FILE="$HOME/Library/Logs/brew-update.log"
