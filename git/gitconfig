@@ -32,7 +32,7 @@
 [core]
 	quotepath = false
 	editor = vim
-	excludesfile = /Users/Final/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	autocrlf = input
 [difftool "sourcetree"]
 	cmd = opendiff "$LOCAL" "$REMOTE"

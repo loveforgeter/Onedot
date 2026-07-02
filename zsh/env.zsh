@@ -8,10 +8,6 @@ export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 # Brew
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
-# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
-# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
-# export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 # Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
@@ -27,7 +23,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
 
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"

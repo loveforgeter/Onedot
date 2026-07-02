@@ -6,7 +6,10 @@
     <string>com.user.brewupdate</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/Final/Organization/Jarvis/One/LaunchAgents/brew-update-script.sh</string>
+        <string>/bin/bash</string>
+        <string>-l</string>
+        <string>-c</string>
+        <string>source "$HOME/.zshrc" &>/dev/null; exec "$HOME/One/LaunchAgents/brew-update-script.sh"</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
