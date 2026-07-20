@@ -74,6 +74,7 @@ installers=(
   "$ONE_DOT/git/install.sh"
   "$ONE_DOT/zsh/install.sh"
   "$ONE_DOT/vim/install.sh"
+  "$ONE_DOT/nvim/install.sh"
 )
 
 for installer in "${installers[@]}"; do
