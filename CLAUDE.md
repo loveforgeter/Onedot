@@ -4,73 +4,68 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Onedot** - A collection of dotfiles for macOS (Darwin) and Ubuntu, primarily focused on:
-- Zsh shell configuration with Antigen plugin manager
-- Vim editor configuration with Vundle plugin manager
-- Powerline fonts, Xcode themes/snippets, and development tool configs
+**Dotfiles** - A collection of development environment configurations for macOS (Darwin) and Ubuntu, primarily focused on:
+- Zsh shell configuration with native oh-my-zsh plugins
+- Vim editor configuration with vim-plug plugin manager
+- Development tool configurations
 
 ## Installation & Setup
 
 ### Bootstrap (run once)
 ```bash
-# Initialize submodules and run all install scripts
-./Dotfiles/bootstrap
+# Run all install scripts
+./install
 ```
 
 ### Individual component installation
 ```bash
 # Zsh
-source Dotfiles/zsh/install.sh
+source zsh/install.sh
 
 # Vim
-source Dotfiles/vim/install.sh
+source vim/install.sh
 ```
 
 ## Architecture
 
 ### Directory Structure
 ```
-One/
-├── Dotfiles/
-│   ├── lib              # Shared bash functions (os detection, colors, actions)
+Dotfiles/
+├── vim/
 │   ├── vim/
-│   │   ├── vim/
-│   │   │   ├── vimrcs/  # Modular vim config (basic, plugins, keymaps, functions)
-│   │   │   └── plugins/ # Vundle-managed plugins (Vundle.vim tracked, others gitignored)
-│   │   ├── vimrc        # Main vim entry point
-│   │   └── install.sh
-│   └── zsh/
-│       ├── bootstrap.zsh  # Sources all zsh modules
-│       ├── antigen.zsh    # Plugin definitions (oh-my-zsh based)
-│       ├── main.zsh       # Entry point (locale, PATH, powerlevel10k, brew, pyenv)
-│       ├── env.zsh        # Environment variables (Brew, Android, Flutter, Rust, LLVM)
-│       ├── aliases.zsh    # Shell aliases
-│       ├── functions.zsh  # Shell functions (proxy, gitignore.io)
-│       └── keybindings.zsh
-├── Dotfiles/fonts/    # Powerline fonts (git submodule)
-├── Xcode-Themes/
-└── Xcode-Snippets/
+│   │   └── vimrcs/       # Modular Vim config
+│   ├── vimrc             # Main Vim entry point
+│   └── install.sh
+├── zsh/
+│   ├── bootstrap.zsh     # Sources all Zsh modules
+│   ├── plugins.zsh       # Plugin definitions
+│   ├── main.zsh          # Entry point
+│   ├── env.zsh           # Environment variables
+│   ├── aliases.zsh       # Shell aliases
+│   ├── functions.zsh     # Shell functions
+│   └── keybindings.zsh
+└── install               # Install all components
 ```
 
 ### Zsh Configuration Flow
 1. `main.zsh` - Entry point, sources `bootstrap.zsh`
-2. `bootstrap.zsh` - Sources antigen, env, keybindings, aliases, functions, user.zsh (optional)
-3. `antigen.zsh` - Defines oh-my-zsh bundles: autojump, git, pyenv, zsh-syntax-highlighting, etc.
+2. `bootstrap.zsh` - Sources plugins, env, keybindings, aliases, functions, user.zsh (optional)
+3. `plugins.zsh` - Defines oh-my-zsh plugins and plugin settings
 
 ### Vim Configuration Flow
 1. `vimrc` - Sets runtimepath, sources modular configs from `vimrcs/`
-2. `vimrcs/plugins.vim` - Vundle plugin definitions
+2. `vimrcs/plugins.vim` - vim-plug plugin definitions
 3. `vimrcs/basic.vim` - Core vim settings (colors, indentation, search)
 4. `vimrcs/key_map.vim` - Leader mappings (`,` as leader), window/buffer management
-5. `vimrcs/plugin_config.vim` - Plugin-specific configs (syntastic, vim-go, airline)
+5. `vimrcs/plugin_config.vim` - Plugin-specific configs (Airline, FZF, Git, and Catppuccin)
 6. `vimrcs/functions.vim` - Utility functions (trim whitespace, sudo save)
 
 ## Key Tools & Dependencies
 
 | Tool | Purpose |
 |------|---------|
-| **Antigen** | Zsh plugin manager (oh-my-zsh ecosystem) |
-| **Vundle** | Vim plugin manager |
+| **oh-my-zsh** | Zsh plugin ecosystem |
+| **vim-plug** | Vim plugin manager |
 | **Homebrew** | macOS package manager |
 | **pyenv** | Python version management |
 | **Powerlevel10k** | Zsh theme |
@@ -79,18 +74,18 @@ One/
 
 ```bash
 # Vim: Install plugins
-:PluginInstall
+:PlugInstall
 
 # Vim: Update plugins
-:PluginUpdate
+:PlugUpdate
 
 # Vim: Clean unused plugins
-:PluginClean
+:PlugClean
 ```
 
 ## Platform Notes
 
 - Primary target: **macOS (Darwin)** - Homebrew paths, Xcode, Android SDK, Flutter configured
-- Secondary: **Ubuntu** - apt-get fallbacks in lib functions
+- Secondary: **Ubuntu** - apt-get fallbacks in installation helpers
 - Uses Chinese mirrors for Homebrew bottles and Flutter/Dart (tuna.tsinghua.edu.cn)
 - Secrets loaded from `~/.zshrc.secrets` if present

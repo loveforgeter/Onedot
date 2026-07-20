@@ -36,8 +36,7 @@ set expandtab                 " Use spaces instead of tabs
 set tabstop=2                 " Tab width
 set shiftwidth=2              " Indent width
 set autoindent                " Copy indent from current line
-set cindent                   " Use C-style indentation
-set smartindent               " Smart autoindenting
+filetype plugin indent on     " Enable filetype plugins and indentation
 
 " -----------------------------------------------------------------------------
 " Search
@@ -89,9 +88,9 @@ set equalalways               " Equal window sizes
 " Backup & Undo
 " -----------------------------------------------------------------------------
 set backup                    " Keep backup file
-set backupdir=~/.vim/tmp//    " Backup directory
+set backupdir=$HOME/.vim/tmp/backup// " Backup directory
 set undofile                  " Persistent undo
-set undodir=~/.vim/tmp/undo//
+set undodir=$HOME/.vim/tmp/undo// " Undo directory
 
 " -----------------------------------------------------------------------------
 " Folding

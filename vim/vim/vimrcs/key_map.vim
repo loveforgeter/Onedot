@@ -74,13 +74,12 @@ map <leader>t<leader> :tabnext
 " Useful mappings for managing buffers
 map <leader>bn :bn<cr>
 map <leader>bp :bp<cr>
-map <leader>bc :Bclose<cr>
+map <leader>bc :bd<cr>
 
 " Plugin shortcut
-map <leader>nn :NERDTree<cr>
-map <leader>tt :Tagbar<cr>
-map <leader>p  :CtrlP<cr>
-map <leader>t  :CtrlPBufTag<cr>
+nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>h :History<CR>
 
 " Enter Insert Mode
 map <ENTER> o
@@ -98,15 +97,6 @@ nnoremap Y y$
 
 " Map Backspace as d
 vnoremap <BACKSPACE> d
-
-" Toggle NerdTree
-nnoremap <F5> :NERDTreeToggle<CR>
-
-" Toggle Tagbar
-nnoremap <F6> :Tagbar<CR>
-
-" Syntastic Check
-nnoremap <F7> :SyntasticCheck<CR>
 
 " Format Code
 nnoremap <F8> :Autoformat<CR>

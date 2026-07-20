@@ -1,21 +1,11 @@
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
-Plug 'ayu-theme/ayu-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 Plug 'Chiel92/vim-autoformat'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'dense-analysis/ale'
-Plug 'fatih/vim-go'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
-Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'

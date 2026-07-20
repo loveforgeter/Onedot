@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-od_echo_info "configuring git ..."
-
 # Link global gitconfig
-od_action_link "$(od_pwd)/gitconfig" "$HOME/.gitconfig"
+if [[ -e "$HOME/.gitconfig" && ! -L "$HOME/.gitconfig" ]]; then
+  backup="$HOME/.gitconfig.backup.$(date +%Y%m%d%H%M%S)"
+  mv -- "$HOME/.gitconfig" "$backup"
+fi
+od_action_link "$(od_pwd)/git/gitconfig" "$HOME/.gitconfig"
 
 # Create global .gitignore if not exists
 if [ ! -f "$HOME/.gitignore_global" ]; then
@@ -17,3 +19,5 @@ if [ ! -f "$HOME/.gitignore_global" ]; then
 EOF
   od_echo_success "Created ~/.gitignore_global"
 fi
+
+od_echo_success "Git configuration installed"

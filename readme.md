@@ -1,4 +1,4 @@
-# Onedot
+# Dotfiles
 
 > Amazing dotfiles for macOS and Ubuntu
 
@@ -6,8 +6,8 @@ A curated collection of dotfiles and development environment configurations for 
 
 ## Features
 
-- **Zsh Shell** - Powered by Antigen plugin manager with oh-my-zsh ecosystem
-- **Vim Editor** - Vundle-managed plugins with modular configuration
+- **Zsh Shell** - Native oh-my-zsh configuration with modular plugins
+- **Vim Editor** - vim-plug-managed plugins with modular configuration
 - **Powerlevel10k** - Fast and feature-rich Zsh theme
 - **Cross-platform** - macOS (primary) and Ubuntu support
 
@@ -17,42 +17,38 @@ A curated collection of dotfiles and development environment configurations for 
 
 ```bash
 # Clone the repository
-git clone --recursive https://github.com/final/One.git ~/One
+git clone https://github.com/loveforgeter/Dotfiles.git ~/Dotfiles
 
-# Run the bootstrap script to install everything
-~/One/Dotfiles/bootstrap
+# Run the installer to install everything
+~/Dotfiles/install
 ```
 
 ### Manual Installation
 
 ```bash
 # Install Zsh configuration
-source ~/One/Dotfiles/zsh/install.sh
+source ~/Dotfiles/zsh/install.sh
 
 # Install Vim configuration
-source ~/One/Dotfiles/vim/install.sh
+source ~/Dotfiles/vim/install.sh
 ```
 
 ## Structure
 
 ```
-One/
-├── Dotfiles/
-│   ├── lib                 # Shared utility functions
-│   ├── zsh/                # Zsh configuration
-│   │   ├── bootstrap.zsh   # Main entry point
-│   │   ├── antigen.zsh     # Plugin definitions
-│   │   ├── env.zsh         # Environment variables
-│   │   ├── aliases.zsh     # Shell aliases
-│   │   └── functions.zsh   # Shell functions
-│   └── vim/                # Vim configuration
-│       ├── vim/
-│       │   └── vimrcs/     # Modular vim configs
-│       ├── vimrc           # Vim entry point
-│       └── install.sh
-├── fonts/                  # Powerline fonts
-├── Xcode-Themes/           # Xcode color schemes
-└── Xcode-Snippets/         # Xcode code snippets
+Dotfiles/
+├── zsh/                    # Zsh configuration
+│   ├── bootstrap.zsh       # Main entry point
+│   ├── plugins.zsh         # Plugin definitions
+│   ├── env.zsh             # Environment variables
+│   ├── aliases.zsh         # Shell aliases
+│   └── functions.zsh       # Shell functions
+├── vim/                    # Vim configuration
+│   ├── vim/
+│   │   └── vimrcs/         # Modular Vim configs
+│   ├── vimrc               # Vim entry point
+│   └── install.sh
+└── install                 # Install all components
 ```
 
 ## Included Tools
@@ -73,15 +69,11 @@ One/
 
 | Plugin | Description |
 |--------|-------------|
-| `vim-airline` | Status bar |
-| `nerdtree` | File explorer |
-| `tagbar` | Tags browser |
-| `ctrlp` | Fuzzy file finder |
-| `syntastic` | Syntax checking |
-| `vim-go` | Go development |
-| `emmet-vim` | HTML/CSS snippets |
+| `fzf.vim` | Fuzzy file, buffer, and history finder |
+| `vim-fugitive` | Git integration |
 | `vim-gitgutter` | Git diff in gutter |
-| `onedark.vim` | Color scheme |
+| `vim-airline` | Status bar |
+| `catppuccin/vim` | Catppuccin Mocha color scheme |
 
 ## Environment
 
