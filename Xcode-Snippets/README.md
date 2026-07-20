@@ -1,2 +1,0 @@
-# Candy
-xcode snippets
