@@ -5,6 +5,21 @@ export ZSH_CACHE_DIR="$ZSH/cache"
 # Bin
 export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
+# Prefer Neovim while keeping Vim-compatible fallbacks.
+if (( $+commands[nvim] )); then
+  export DEFAULT_EDITOR=nvim
+elif (( $+commands[vim] )); then
+  export DEFAULT_EDITOR=vim
+else
+  export DEFAULT_EDITOR=vi
+fi
+
+export EDITOR="$DEFAULT_EDITOR"
+export VISUAL="$DEFAULT_EDITOR"
+export GIT_EDITOR="$DEFAULT_EDITOR"
+alias vim="$DEFAULT_EDITOR"
+alias vi="$DEFAULT_EDITOR"
+
 # Brew
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
