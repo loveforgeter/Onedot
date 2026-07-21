@@ -25,3 +25,4 @@ eval "$(pyenv init --path)"
 # OpenCode
 # =============================================================================
 export OPENCODE_DISABLE_CLAUDE_CODE=1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
