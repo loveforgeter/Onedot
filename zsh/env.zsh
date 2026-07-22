@@ -5,28 +5,9 @@ export ZSH_CACHE_DIR="$ZSH/cache"
 # Bin
 export PATH="$HOME/.local/bin:$HOME/.bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Prefer Neovim while keeping Vim-compatible fallbacks.
-if (( $+commands[nvim] )); then
-  export DEFAULT_EDITOR=nvim
-elif (( $+commands[vim] )); then
-  export DEFAULT_EDITOR=vim
-else
-  export DEFAULT_EDITOR=vi
-fi
-
-export EDITOR="$DEFAULT_EDITOR"
-export VISUAL="$DEFAULT_EDITOR"
-export GIT_EDITOR="$DEFAULT_EDITOR"
-alias vim="$DEFAULT_EDITOR"
-alias vi="$DEFAULT_EDITOR"
-
 # Brew
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
-# export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
-# export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
-# export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
-# export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 # Xcode
 export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
